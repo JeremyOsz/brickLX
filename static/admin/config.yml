@@ -4,7 +4,7 @@ backend:
     - root
   repo: 'jeremyosz/brickLX'
 media_folder: 'static/uploads' # Media files will be stored in the repo under static/images/uploads
-public_folder: 'uploads' # The src attribute for uploaded media will begin with /images/uploads
+public_folder: 'static/uploads' # The src attribute for uploaded media will begin with /images/uploads
 collections:
   - name: 'blog' # Used in routes, e.g., /admin/collections/blog
     label: 'News' # Used in the UI
@@ -20,6 +20,22 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: true}
       - {label: "Body", name: "body", widget: "markdown"}
+  - label: "Featured Project"
+    name: "FeturedProject"
+    widget: "object"
+    allow add: true
+    folder: 'content/featured'
+    create: true
+    identifier_field: 'proj-id'
+    fields:
+      - label: "Project"
+        name: "featured-project-relation"
+        widget: "relation"
+        collection: "Projeccts"
+        searchFields: ["name", "proj-id"]
+        displayFields: ["name", "proj-id"]
+        valueField: "proj-id"
+        multiple: false
   - label: "Projects"
     name: "Projects"
     widget: "list"
@@ -31,23 +47,23 @@ collections:
       - {label: Title, name: proj-title, widget: string}
       - {label: Project ID, name: proj-id, widget: string, required: true}
       - {label: "Featured Image", name: "proj-img-1", widget: "image", required: true}
+      - label: "Project"
+        name: "project-images-relation"
+        widget: "relation"
+        collection: "Images"
+        searchFields: ["name", "img-1"]
+        displayFields: ["name", "img-1"]
+        valueField: "name"
+        multiple: true
   - label: "Images"
     name: "Images"
     widget: "image"
     allow add: true
     folder: 'content/images'
     create: true
-    identifier_field: 'image-id'
+    identifier_field: 'name'
     fields:
       - {label: Name, name: name, widget: string}
       - {label: Caption, name: caption, widget: string}
-      - {label: Image ID, name: img-id, widget: string, required: true}
       - {label: "Image", name: "img-1", widget: "image", required: true}
-      - label: "Project"
-        name: "project-relation"
-        widget: "relation"
-        collection: "Projects"
-        searchFields: ["proj-id", "proj-title"]
-        valueField: "news-id"
-        multiple: true
               

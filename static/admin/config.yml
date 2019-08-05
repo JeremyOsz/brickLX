@@ -12,15 +12,15 @@ collections:
     allow add: true
     folder: 'src/content/featured'
     create: true
-    identifier_field: 'proj-id'
+    identifier_field: 'projID'
     fields:
       - label: "Project"
-        name: "featured-project-relation"
+        name: "relFeaturedPoject"
         widget: "relation"
         collection: "Projeccts"
-        searchFields: ["name", "proj-id"]
-        displayFields: ["name", "proj-id"]
-        valueField: "proj-id"
+        searchFields: ["name", "projId"]
+        displayFields: ["name", "projId"]
+        valueField: "projId"
         multiple: false
   - label: "Projects"
     name: "Projects"
@@ -28,11 +28,10 @@ collections:
     allow add: true
     folder: 'src/content/projects'
     create: true
-    identifier_field: 'proj-id'
+    identifier_field: 'projId'
     fields:
-      - {label: Title, name: proj-title, widget: string}
-      - {label: Project ID, name: proj-id, widget: string, required: true}
-      - {label: "Featured Image", name: "proj-img-1", widget: "image", required: true}
+      - {label: Title, name: projTitle, widget: string}
+      - {label: Project ID, name: projId, widget: string, required: true}
       - label: Image 
         name: imageTest 
         widget: list 

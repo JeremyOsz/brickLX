@@ -28,6 +28,30 @@ const globalStyles = styled.div`
   }
 `;
 
+export default function Template({data}){
+  const {markdownRemark:post} = data;
+  return(
+    <div>
+      <globalStyles>
+        <h1> BrickLX </h1>
+        <p> Hello BrickLX </p>
+        {post.frontmatter['proj-title']}
+      </globalStyles>
+    </div>
+  )
+}
+
+export const postQuery = graphql`
+  query BlogPostByPath($path: String!) {
+    markdownRemark(frontmatter: { path: {eq: $path} }){
+      html
+      frontmatter{
+        path
+        title
+      }
+    }
+  }
+`
 export default () => (
   <div>
     <globalStyles>

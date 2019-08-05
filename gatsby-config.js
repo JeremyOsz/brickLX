@@ -6,7 +6,7 @@
 
 module.exports = {
   /* Your site config here */
-}
+};
 /**
  * Configure your Gatsby site with this file.
  *
@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-netlify-cms',
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: `gatsby-plugin-styled-components`
     },
     {
       resolve: 'gatsby-plugin-eslint',
@@ -32,6 +32,14 @@ module.exports = {
           failOnError: false
         }
       }
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/public/`
+      }
+    },
+    'gatsby-transformer-remark'
   ]
 };
